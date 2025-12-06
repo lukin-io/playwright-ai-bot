@@ -1,0 +1,21 @@
+{
+  "name": "neverlands-bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright-based browser bot and GPT analyst for neverlands.ru",
+  "main": "index.js",
+  "scripts": {
+    "login": "ts-node bot/login.ts",
+    "crawl": "ts-node bot/crawl.ts",
+    "analyze": "ts-node analyzer/analyzeScreens.ts",
+    "start": "npm run login && npm run crawl && npm run analyze"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}

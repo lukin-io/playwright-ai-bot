@@ -1,0 +1,115 @@
+{
+  "cookies": [
+    {
+      "name": "watermark",
+      "value": "iPMST2k0k2wZnS18FxV4Ag==",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": 1796589292.019243,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "PHPSESSID",
+      "value": "6v89kqp5edan3huogsnj2g34d6",
+      "domain": ".neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverPuid",
+      "value": "2459781",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": 1796589293.512747,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverCode",
+      "value": "11803896966934936daf78520232933076934936daf7e9",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverHash",
+      "value": "2c28b6e8b4d5150031e13743fda88e42",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverChat",
+      "value": "4ddf6679e3ec09ecf316fc358998667f",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverUser",
+      "value": "lukin",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverFunc",
+      "value": "2cbe8b9128d4e727ab4d4b34a3eb560d",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverNick",
+      "value": "lukin",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverFVal",
+      "value": "0",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "NeverExpi",
+      "value": "1765139693",
+      "domain": "www.neverlands.ru",
+      "path": "/",
+      "expires": 1765139693.512951,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

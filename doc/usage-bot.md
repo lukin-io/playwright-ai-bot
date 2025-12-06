@@ -42,10 +42,12 @@ Edit `bot/crawl.ts` to list the screens you want:
 
 ```ts
 const screens: ScreenConfig[] = [
+  // Main in-game view after successful login
   { id: "home", url: normalizeNeverlandsUrl(process.env.NEVERLANDS_HOME_URL) },
-  { id: "inventory", url: "http://www.neverlands.ru/?page=inventory" },
-  { id: "character", url: "http://www.neverlands.ru/?page=character" },
-  { id: "shop", url: "http://www.neverlands.ru/?page=shop" }
+  // Examples of additional in-game URLs you might add later:
+  // { id: "inventory", url: "http://www.neverlands.ru/?page=inventory" },
+  // { id: "character", url: "http://www.neverlands.ru/?page=character" },
+  // { id: "shop", url: "http://www.neverlands.ru/?page=shop" }
 ];
 ```
 

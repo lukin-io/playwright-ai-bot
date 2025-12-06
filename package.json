@@ -8,6 +8,7 @@
     "login": "ts-node bot/login.ts",
     "crawl": "ts-node bot/crawl.ts",
     "analyze": "ts-node analyzer/analyzeScreens.ts",
+    "fetch-assets": "ts-node analyzer/fetchAssets.ts",
     "start": "npm run login && npm run crawl && npm run analyze"
   },
   "dependencies": {

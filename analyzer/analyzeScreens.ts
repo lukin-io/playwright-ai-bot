@@ -20,9 +20,24 @@ async function readPromptTemplate() {
 
 async function listHtmlSnapshots(dir: string) {
   const entries = await fs.promises.readdir(dir, { withFileTypes: true });
-  return entries
+  const allHtml = entries
     .filter((e) => e.isFile() && e.name.endsWith(".html"))
     .map((e) => path.join(dir, e.name));
+
+  // Prefer the main game frame captured as frame-main_top.html (or similar).
+  const mainFrame = allHtml.find((p) =>
+    ["frame-main_top.html", "frame-main_top_.html", "frame-main_top_f.html"].includes(
+      path.basename(p)
+    )
+  );
+
+  if (mainFrame) {
+    console.log("Analyzing main game frame only:", mainFrame);
+    return [mainFrame];
+  }
+
+  console.log("Main game frame not found, analyzing all HTML snapshots.");
+  return allHtml;
 }
 
 async function callOpenAI(prompt: string, html: string) {

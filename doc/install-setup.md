@@ -43,9 +43,10 @@ This project uses `dotenv` to load configuration from a local `.env` file.
 4. Optional: override URLs or the model if needed:
 
    ```dotenv
-   NEVERLANDS_LOGIN_URL=http://www.neverlands.ru/
-   NEVERLANDS_HOME_URL=http://www.neverlands.ru/
+   NEVERLANDS_LOGIN_URL=http://www.neverlands.ru/          # login page
+   NEVERLANDS_HOME_URL=http://www.neverlands.ru/game.php   # in-game view after login
    OPENAI_MODEL=gpt-5.1
+   USE_SCREENSHOTS=true        # set to false to skip screenshots
    ```
 
 Your `.env` file should **never** be committed to version control.

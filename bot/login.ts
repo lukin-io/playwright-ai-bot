@@ -2,6 +2,7 @@ import "dotenv/config";
 import { chromium } from "playwright";
 import * as fs from "fs";
 import * as path from "path";
+import { fetchAssetsForMainFrame } from "../analyzer/fetchAssets";
 
 async function ensureDir(dir: string) {
   await fs.promises.mkdir(dir, { recursive: true });
@@ -123,7 +124,58 @@ async function main() {
     ]);
   }
 
-  await page.waitForLoadState("networkidle");
+  // Give the game a short moment to settle after navigation
+  await page.waitForTimeout(3000);
+
+  // Capture the current page HTML as the "home" snapshot
+  const rawDir = path.join("data", "raw");
+  await ensureDir(rawDir);
+  const homeHtmlPath = path.join(rawDir, "home.html");
+  console.log("Saving post-login HTML to", homeHtmlPath);
+  const html = await page.content();
+  await fs.promises.writeFile(homeHtmlPath, html, "utf8");
+
+  // Additionally capture the main game frame that game.js/view_frames() creates.
+  // We treat the frame named "main_top" (main.php) as the primary game UI.
+  const frames = page.frames();
+  const mainFrame = frames.find(
+    (f) => f.name() === "main_top" || f.url().includes("/main.php")
+  );
+
+  if (!mainFrame) {
+    console.warn(
+      "No frame named 'main_top' or URL containing '/main.php' found after login."
+    );
+  } else {
+    const frameUrl = mainFrame.url();
+    const frameName = mainFrame.name() || "main_top";
+    const safeName = frameName.replace(/[^a-zA-Z0-9_-]+/g, "_");
+    const framePath = path.join(rawDir, `frame-${safeName}.html`);
+
+    try {
+      console.log(
+        "Saving main game frame name=",
+        frameName,
+        "url=",
+        frameUrl,
+        "to",
+        framePath
+      );
+      const frameHtml = await mainFrame.content();
+      await fs.promises.writeFile(framePath, frameHtml, "utf8");
+    } catch (err) {
+      console.warn("Failed to capture main game frame HTML:", err);
+    }
+  }
+
+  // Optionally fetch all CSS/JS assets referenced by the main game frame,
+  // so you have a local mirror of styles and scripts.
+  try {
+    console.log("Fetching CSS/JS assets for main frame...");
+    await fetchAssetsForMainFrame();
+  } catch (err) {
+    console.warn("Failed to fetch assets for main frame:", err);
+  }
 
   const sessionDir = path.join("data", "session");
   await ensureDir(sessionDir);

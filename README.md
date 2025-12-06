@@ -73,9 +73,10 @@ This project uses `dotenv` to load configuration from a local `.env` file.
 4. Optional: override URLs or the model if needed:
 
    ```dotenv
-   NEVERLANDS_LOGIN_URL=http://www.neverlands.ru/
-   NEVERLANDS_HOME_URL=http://www.neverlands.ru/
+   NEVERLANDS_LOGIN_URL=http://www.neverlands.ru/          # login page
+   NEVERLANDS_HOME_URL=http://www.neverlands.ru/game.php   # in-game screen after login
    OPENAI_MODEL=gpt-5.1
+   USE_SCREENSHOTS=true        # set to false to skip screenshots
    ```
 
 Your `.env` file should never be committed to version control.
@@ -122,10 +123,12 @@ Edit `bot/crawl.ts` to list the screens you want to analyse. For example:
 
 ```ts
 const screens: ScreenConfig[] = [
+  // Main in-game view after successful login
   { id: "home", url: normalizeNeverlandsUrl(process.env.NEVERLANDS_HOME_URL) },
-  { id: "inventory", url: "http://www.neverlands.ru/?page=inventory" },
-  { id: "character", url: "http://www.neverlands.ru/?page=character" },
-  { id: "shop", url: "http://www.neverlands.ru/?page=shop" }
+  // Examples of additional in-game URLs you might add later:
+  // { id: "inventory", url: "http://www.neverlands.ru/?page=inventory" },
+  // { id: "character", url: "http://www.neverlands.ru/?page=character" },
+  // { id: "shop", url: "http://www.neverlands.ru/?page=shop" }
 ];
 ```
 
